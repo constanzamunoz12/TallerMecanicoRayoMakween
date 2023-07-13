@@ -1,0 +1,37 @@
+{% extends 'core/plantilla.html' %}
+{% load static %}
+
+  {% block css %}
+  <link rel="stylesheet" href= {% static "css/servicios.css" %}>
+  <link rel="stylesheet" href= {% static "dist/css/lightbox.min.css" %}>
+  {% endblock %}
+
+  {% block contenido %}
+  <section class="servicios">
+    <div class="contenedor-serv">
+      <h1>¿Qué servicios necesitas?</h1>
+      <p> En nuestro taller mecánico ofrecemos una amplia gama de servicios profesionales para el cuidado y mantenimiento de vehículos. Nuestro equipo de expertos mecánicos altamente capacitados está comprometido en brindar un servicio de calidad y confiable a nuestros clientes.
+               
+      </p> 
+      <section id="img-servicios">
+          <div class="fotosxd">
+              {% for x in lista %}
+                <article> <!--Creamos diferentes articulos--> 
+                <a href= {{x.imagen_categoria}} data-lightbox="mecanicos" data-title={{x.categoria}}> 
+                  <img src= {{x.imagen_categoria}} title = {{x.categoria}}  alt={{x.categoria}}>
+                </a> 
+                <h4> {{ x.categoria }} </h4>
+                </article>
+              {% endfor %}
+
+          </div>
+      </section>
+    </div>
+  </section>
+  {% endblock %}
+  
+{% block js %}
+  <script src= {% static "https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" %} integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+  <script src= {% static "https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" %} integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+  <script src= {% static "dist/js/lightbox-plus-jquery.min.js" %} ></script> 
+{% endblock %}

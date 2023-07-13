@@ -1,0 +1,88 @@
+{% extends 'core/plantilla.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href={% static "css/formularioPostulacion.css" %}>
+{% endblock css%}
+
+{% block contenido %}
+<main class="postuleichon">
+    <form id="formPostulacion" class="form-postulacion needs-validation" novalidate action="{% url 'POSTULACION' %}"
+        method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <section class="postulacion">
+
+            <h1 class="titulo-postulacion">Formulario de postulación</h1>
+
+            <div class="Postular">
+
+                <div>
+                    <div class="form-check">
+                        <div class="div-nombre">
+                            <label for="txtNombre">Nombre:</label>
+                            <input id="txtNombre" name="txtNombre" type="text" placeholder="Nombre"
+                                class="form-control" required>
+                            <div class="invalid-feedback">
+                                Este campo es obligatorio
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-check">
+                        <div class="div-apellido">
+                            <label for="txtApellido">Apellido:</label>
+                            <input id="txtApellido" name="txtApellido" type="text" placeholder="Apellido"
+                                class="form-control" required>
+                            <div class="invalid-feedback">
+                                Este campo es obligatorio
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-check">
+                        <div class="div-correo">
+                            <label for="txtCorreo">Correo:</label>
+                            <input id="txtCorreo" name="txtCorreo" type="email" placeholder="john@doe.com"
+                                class="form-control" required>
+                            <div class="invalid-feedback">
+                                Este campo es obligatorio
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-check">
+                        <div style="margin-bottom: 20px">
+                            <label for="txtImagen">Imagen:</label>
+                            <input id="txtImagen" name="txtImagen" class="col-100" type="file" required>
+                            <div class="invalid-feedback">
+                                Este campo es obligatorio
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-check">
+                        <div style="margin-bottom: 20px">
+                            <label for="txtCV">CV:</label>
+                            <input id="txtCV" name="txtCV" class="col-100" type="file" accept=".pdf" required>
+                            <div class="invalid-feedback">
+                                El archivo del CV debe estar en formato PDF.
+                            </div>
+                        </div>
+                    </div>
+
+                    <input id="btnEnviarPostulacion" class="btn-enviar-formu" type="submit" value="Enviar">
+                </div>
+            </div>
+
+
+
+        </section>
+
+    </form>
+
+</main>
+{% endblock %}
+
+{% block js %}
+<script src={% static "js/postulaciones-formulario.js" %}></script>
+<script src={% static "js/sweetalert2.all.min.js" %}></script>
+{% endblock %}

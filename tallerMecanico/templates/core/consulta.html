@@ -1,0 +1,52 @@
+{% extends 'core/plantilla.html' %}
+{% load static %}
+
+{% block css %}
+  <link rel="stylesheet" href= {% static "css/formularioConsulta.css" %}>
+{% endblock css%}
+
+{% block contenido %}
+  <main class="consulteichon">
+      <form class="formu-consulta" action="{% url 'MOSTRARC' %}" method="POST">
+      {% csrf_token %}
+        <section class="consulta">
+
+            <h1 class="titulo-consulta">Formulario de consulta</h1>
+
+            <div class="Consultar">
+                
+              <div>
+                <div style="display: flex;  margin-top: 20px">
+                  <h4 style="text-align: left; margin-left: 35px;">Categoria :</h4>
+
+                  <select class="col-100" style="width: 50%;  margin-left: 5px; height: 30px; " name = "cboCategoria2" id="cboCategoria2">
+                    {% for x in tipos %}
+                        <option value = "{{ x.categoria }}" >{{ x.categoria }}</option>                 
+                    {% endfor %}     
+                  </select>
+                </div>
+                  
+                <div class="div-nombre"  style="text-align: left; margin-left: 35px; font-size: 23px; margin-top: 20px"> 
+                  <label for="">Correo : </label>
+                    <input name="txtEmail">
+                </div>
+
+                <div style="margin-bottom: 20px">
+                    <input class="columnita-40x" type="text" name="txtComentario" id="txtComentario" placeholder="Comentario" required minlength="10" maxlength="100">
+                </div>
+
+                <input id="btnEnviarConsulta" class="btn-enviar-formu" type="submit" value="Enviar">
+                
+            </div>
+
+        </section>
+
+    </form>
+    
+  </main>
+{% endblock %}
+
+{% block js %}
+  <script src= {% static "js/consulta-formulario.js" %}></script>
+  <script src= {% static "js/sweetalert2.all.min.js" %}></script>
+{% endblock %}

@@ -1,0 +1,5 @@
+django==3.0 
+pillow
+djangorestframework
+requests
+django-progressive-web-app
